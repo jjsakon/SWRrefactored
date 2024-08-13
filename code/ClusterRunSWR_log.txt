@@ -1,0 +1,136 @@
+2024-08-02_16-03-28: DF Exception: Sub: R1385E, Sess: 1, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 543
+2024-08-02_16-06-50: DF Exception: Sub: R1385E, Sess: 1, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 543
+2024-08-02_16-20-51: DF Exception: Sub: R1385E, Sess: 1, BdbQuit, , file: createEventsForDF.py, line no: 543
+2024-08-02_16-31-47: DF Exception: Sub: R1136N, Sess: 1, ValueError, No column combination found. Please make sure that the specified columns exist in the dataframe, are numeric, and contains at least two unique values., file: createEventsForDF.py, line no: 675
+2024-08-02_16-31-53: DF Exception: Sub: R1345D, Sess: 0, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_16-32-00: DF Exception: Sub: R1345D, Sess: 2, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_16-32-01: DF Exception: Sub: R1345D, Sess: 0, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_16-32-08: DF Exception: Sub: R1345D, Sess: 0, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_16-32-08: DF Exception: Sub: R1345D, Sess: 1, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_16-32-13: DF Exception: Sub: R1345D, Sess: 2, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_16-32-13: DF Exception: Sub: R1345D, Sess: 3, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_16-32-25: DF Exception: Sub: R1345D, Sess: 4, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_16-32-26: DF Exception: Sub: R1345D, Sess: 2, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_16-32-31: DF Exception: Sub: R1345D, Sess: 1, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_16-32-33: DF Exception: Sub: R1367D, Sess: 0, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_16-32-36: DF Exception: Sub: R1345D, Sess: 3, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_16-32-36: DF Exception: Sub: R1367D, Sess: 0, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_16-32-39: DF Exception: Sub: R1345D, Sess: 4, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_16-32-40: DF Exception: Sub: R1367D, Sess: 0, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_16-32-46: DF Exception: Sub: R1367D, Sess: 1, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_16-32-50: DF Exception: Sub: R1367D, Sess: 1, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_16-32-53: DF Exception: Sub: R1345D, Sess: 4, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_16-32-53: DF Exception: Sub: R1345D, Sess: 1, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_16-32-53: DF Exception: Sub: R1367D, Sess: 1, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_16-32-59: DF Exception: Sub: R1345D, Sess: 3, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_17-24-27: DF Exception: Sub: R1367D, Sess: 0, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_17-27-33: DF Exception: Sub: R1136N, Sess: 1, ValueError, No column combination found. Please make sure that the specified columns exist in the dataframe, are numeric, and contains at least two unique values., file: createEventsForDF.py, line no: 675
+2024-08-02_17-27-42: DF Exception: Sub: R1345D, Sess: 0, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_17-27-50: DF Exception: Sub: R1345D, Sess: 0, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_17-27-51: DF Exception: Sub: R1345D, Sess: 2, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_17-27-57: DF Exception: Sub: R1345D, Sess: 0, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_17-27-58: DF Exception: Sub: R1345D, Sess: 1, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_17-28-05: DF Exception: Sub: R1345D, Sess: 2, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_17-28-18: DF Exception: Sub: R1345D, Sess: 2, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_17-28-21: DF Exception: Sub: R1345D, Sess: 1, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_17-28-23: DF Exception: Sub: R1345D, Sess: 3, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_17-28-36: DF Exception: Sub: R1345D, Sess: 4, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_17-28-44: DF Exception: Sub: R1345D, Sess: 1, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_17-28-46: DF Exception: Sub: R1345D, Sess: 3, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_17-28-50: DF Exception: Sub: R1345D, Sess: 4, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_17-29-04: DF Exception: Sub: R1345D, Sess: 4, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_17-29-09: DF Exception: Sub: R1345D, Sess: 3, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-02_18-00-16: DF Exception: Sub: R1065J, Sess: 1, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-02_18-00-21: DF Exception: Sub: R1065J, Sess: 1, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-02_18-00-56: DF Exception: Sub: R1136N, Sess: 1, ValueError, No column combination found. Please make sure that the specified columns exist in the dataframe, are numeric, and contains at least two unique values., file: createEventsForDF.py, line no: 675
+2024-08-02_18-01-17: DF Exception: Sub: R1065J, Sess: 4, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-02_18-01-23: DF Exception: Sub: R1065J, Sess: 4, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-02_18-02-14: DF Exception: Sub: R1065J, Sess: 2, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-02_18-02-19: DF Exception: Sub: R1065J, Sess: 2, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-02_18-02-21: DF Exception: Sub: R1065J, Sess: 0, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-02_18-02-26: DF Exception: Sub: R1065J, Sess: 0, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-02_18-02-58: DF Exception: Sub: R1065J, Sess: 3, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-02_18-03-03: DF Exception: Sub: R1065J, Sess: 3, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-02_18-04-04: DF Exception: Sub: R1065J, Sess: 5, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-02_18-04-09: DF Exception: Sub: R1065J, Sess: 5, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-02_18-41-15: DF Exception: Sub: R1108J, Sess: 0, ValueError, No column combination found. Please make sure that the specified columns exist in the dataframe, are numeric, and contains at least two unique values., file: createEventsForDF.py, line no: 675
+2024-08-02_18-41-28: DF Exception: Sub: R1136N, Sess: 1, ValueError, No column combination found. Please make sure that the specified columns exist in the dataframe, are numeric, and contains at least two unique values., file: createEventsForDF.py, line no: 675
+2024-08-05_22-04-15: DF Exception: Sub: R1328E, Sess: 0, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-05_22-12-07: DF Exception: Sub: R1328E, Sess: 3, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-05_22-14-01: DF Exception: Sub: R1328E, Sess: 2, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-05_22-16-08: DF Exception: Sub: R1405E, Sess: 0, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-10: DF Exception: Sub: R1405E, Sess: 0, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-11: DF Exception: Sub: R1405E, Sess: 0, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-16: DF Exception: Sub: R1405E, Sess: 1, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-18: DF Exception: Sub: R1405E, Sess: 1, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-19: DF Exception: Sub: R1405E, Sess: 1, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-20: DF Exception: Sub: R1405E, Sess: 2, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-22: DF Exception: Sub: R1405E, Sess: 2, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-23: DF Exception: Sub: R1405E, Sess: 2, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-25: DF Exception: Sub: R1486J, Sess: 0, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-27: DF Exception: Sub: R1486J, Sess: 0, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-29: DF Exception: Sub: R1486J, Sess: 1, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-30: DF Exception: Sub: R1486J, Sess: 0, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-31: DF Exception: Sub: R1486J, Sess: 1, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-31: DF Exception: Sub: R1486J, Sess: 2, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-33: DF Exception: Sub: R1486J, Sess: 1, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-33: DF Exception: Sub: R1486J, Sess: 2, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-35: DF Exception: Sub: R1486J, Sess: 3, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-36: DF Exception: Sub: R1486J, Sess: 2, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-37: DF Exception: Sub: R1486J, Sess: 3, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-39: DF Exception: Sub: R1492J, Sess: 0, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-40: DF Exception: Sub: R1486J, Sess: 3, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-40: DF Exception: Sub: R1492J, Sess: 0, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-41: DF Exception: Sub: R1492J, Sess: 1, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-42: DF Exception: Sub: R1492J, Sess: 0, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-42: DF Exception: Sub: R1492J, Sess: 1, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-44: DF Exception: Sub: R1492J, Sess: 1, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-45: DF Exception: Sub: R1492J, Sess: 2, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-46: DF Exception: Sub: R1492J, Sess: 2, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-47: DF Exception: Sub: R1492J, Sess: 4, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-48: DF Exception: Sub: R1492J, Sess: 2, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-48: DF Exception: Sub: R1492J, Sess: 4, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-49: DF Exception: Sub: R1501J, Sess: 6, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-50: DF Exception: Sub: R1492J, Sess: 4, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-51: DF Exception: Sub: R1501J, Sess: 6, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-52: DF Exception: Sub: R1501J, Sess: 6, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-53: DF Exception: Sub: R1501J, Sess: 8, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-54: DF Exception: Sub: R1501J, Sess: 8, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-55: DF Exception: Sub: R1501J, Sess: 8, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-55: DF Exception: Sub: R1525J, Sess: 0, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-57: DF Exception: Sub: R1525J, Sess: 0, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-16-58: DF Exception: Sub: R1525J, Sess: 2, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-17-00: DF Exception: Sub: R1525J, Sess: 2, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-17-00: DF Exception: Sub: R1525J, Sess: 0, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-17-01: DF Exception: Sub: R1525J, Sess: 3, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-17-01: DF Exception: Sub: R1525J, Sess: 2, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-17-03: DF Exception: Sub: R1525J, Sess: 4, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-17-03: DF Exception: Sub: R1525J, Sess: 3, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-17-05: DF Exception: Sub: R1525J, Sess: 4, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-17-05: DF Exception: Sub: R1525J, Sess: 5, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-17-06: DF Exception: Sub: R1525J, Sess: 3, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-17-06: DF Exception: Sub: R1525J, Sess: 4, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-17-07: DF Exception: Sub: R1525J, Sess: 6, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-17-07: DF Exception: Sub: R1525J, Sess: 5, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-17-09: DF Exception: Sub: R1525J, Sess: 6, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-17-10: DF Exception: Sub: R1525J, Sess: 5, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-17-12: DF Exception: Sub: R1525J, Sess: 6, TypeError, PointSelection __getitem__ only works with bool arrays, file: createEventsForDF.py, line no: 541
+2024-08-05_22-24-46: DF Exception: Sub: R1328E, Sess: 4, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-06_12-46-52: DF Exception: Sub: R1486J, Sess: 2, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-06_12-46-52: DF Exception: Sub: R1492J, Sess: 0, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-06_12-46-54: DF Exception: Sub: R1492J, Sess: 0, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-06_12-46-56: DF Exception: Sub: R1486J, Sess: 0, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-06_12-46-57: DF Exception: Sub: R1492J, Sess: 0, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-06_12-46-59: DF Exception: Sub: R1492J, Sess: 1, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-06_12-47-00: DF Exception: Sub: R1486J, Sess: 1, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-06_12-47-01: DF Exception: Sub: R1492J, Sess: 1, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-06_12-47-03: DF Exception: Sub: R1492J, Sess: 2, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-06_12-47-04: DF Exception: Sub: R1492J, Sess: 1, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-06_12-47-04: DF Exception: Sub: R1492J, Sess: 4, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-06_12-47-05: DF Exception: Sub: R1492J, Sess: 2, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-06_12-47-06: DF Exception: Sub: R1492J, Sess: 4, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-06_12-47-07: DF Exception: Sub: R1492J, Sess: 2, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-06_12-47-09: DF Exception: Sub: R1492J, Sess: 4, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-06_12-47-31: DF Exception: Sub: R1525J, Sess: 3, ValueError, No column combination found. Please make sure that the specified columns exist in the dataframe, are numeric, and contains at least two unique values., file: createEventsForDF.py, line no: 675
+2024-08-06_12-48-54: DF Exception: Sub: R1486J, Sess: 3, ValueError, No appropriate channels found for the given picks (array([], dtype=float64)), file: createEventsForDF.py, line no: 594
+2024-08-06_12-49-02: DF Exception: Sub: R1525J, Sess: 4, ValueError, No column combination found. Please make sure that the specified columns exist in the dataframe, are numeric, and contains at least two unique values., file: createEventsForDF.py, line no: 675
