@@ -5,52 +5,44 @@ sys.path.append('/home1/john/SWRrefactored/code/SWR_modules/')
 from load_data_numpy import load_data_np
 from comodulogram import remove_session_string
 
-def load_z_scored_power(dd_trials, freq_range_str_arr, encoding_mode,fs, high_fq_range,low_fq_range, start_cutoff, end_cutoff): # this takes you through the filtering and z-scoring process
+def load_z_scored_power(dd_trials,freq_range_str_arr,encoding_mode,fs,start_cutoff,end_cutoff):
+    # this takes you through the filtering and z-scoring process
     
-    run_Morlet = 0
+    run_Morlet = 1
         
     raw_data = dd_trials['raw']
     
     # z scoring is done for each unique subject, session, electrode combo
     subj_elec_sess_labels = dd_trials['elec_labels'] 
 
-    for freq_range_str in freq_range_str_arr:
-        
-        if freq_range_str == 'high':
-            freq_ranges = high_fq_range
-            ylabel = 'Gamma power'
-            bandwidth='auto'
-        elif freq_range_str == 'low':
-            freq_ranges = low_fq_range
-            ylabel = 'Theta power'
-            bandwidth='auto'
+    # filter signal and get powers
 
-        # filter signal and get powers
-        
-        if run_Morlet == 1:
-            num_freqs = 10 # of log-spaced freqs between freq_range...should make sure they don't occur at 60/120
-            filtered_sig = get_filtered_signal_Morlet(raw_data, freq_ranges, start_cutoff, 
-                                           end_cutoff, fs, width=5, num_freqs=num_freqs)
-        else:
-            # filter signal using hilbert method
-            filtered_sig = get_filtered_signal_Hilbert(raw_data, freq_ranges, start_cutoff, 
-                                           end_cutoff, fs, bandwidth=bandwidth)
-                            
-        # obtain power and amplitude
-        filtered_sig = np.abs(filtered_sig) # np.real(np.abs(filtered_sig))
-        filtered_sig_power = filtered_sig**2
-        
-        # z-score data from each electrode 
-        power_z = process_power(filtered_sig_power, subj_elec_sess_labels, run_Morlet)
-        power_z = power_z.squeeze() # I don't think this is necessary? Ebrahim had it here and doesn't hurt tho
-        
-        yield power_z, ylabel
+    if run_Morlet == 1:
+        num_freqs = 10 # of log-spaced freqs between freq_range...should make sure they don't occur at 60/120
+        filtered_sig = get_filtered_signal_Morlet(raw_data, freq_range_str_arr, start_cutoff, 
+                                       end_cutoff, fs, width=5, num_freqs=num_freqs)
+    else:
+        # filter signal using hilbert method
+        filtered_sig = get_filtered_signal_Hilbert(raw_data, freq_range_str_arr, start_cutoff, 
+                                       end_cutoff, fs, bandwidth='auto')
+
+    # obtain power and amplitude
+    filtered_sig = np.abs(filtered_sig).astype(np.float32)  # Reduce to float32
+    filtered_sig = np.square(filtered_sig, out=filtered_sig) # in-place operation
+
+    # z-score data from each electrode
+    filtered_sig = process_power(filtered_sig, subj_elec_sess_labels, run_Morlet)
+    filtered_sig = filtered_sig.squeeze() # I don't think this is necessary? Ebrahim had it here and doesn't hurt tho
+
+    return filtered_sig # formerly called power_z but want to save memory by overwriting filtered_sig
 
 def process_power(power, subj_elec_sess_labels, run_Morlet):
     
     from scipy.signal import decimate
-      
-    power = decimate(np.log10(power), 10) # decimate time
+
+    power = power.astype(np.float64) # otherwise the decimate fails
+    power = decimate(np.log10(power), 10, ftype='fir') # decimate time
+    # if you run out of memory, could try decimate(np.log10(power), 10, ftype('fir')) to avoid NaNs
 
     if run_Morlet == 1:     
         # freq_range X trials X freqs X time for Morlet (e.g. 2x300x10x50)
