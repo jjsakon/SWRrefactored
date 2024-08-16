@@ -88,8 +88,7 @@ def create_semantic_clustered_array(data_dict, encoding_mode):
     :param list unclustered: which entries count as unclustered 
     
         The default is to use A and C as clustered, and D and Z as unclustered. 
-        
-    Modifies clust key to be 1 for clustered, 0 for unclustered, and -1 for everything else
+
     '''
     
     list_length = 12        
@@ -103,7 +102,6 @@ def create_semantic_clustered_array(data_dict, encoding_mode):
         # 2d array containing recall type for each item
         # second axis repeats these values across electrodes
         for sess_clust in semantic_array_all:
-            
             clustered_sess_list = []
             
             semantic_array_np = sess_clust[:, 0]

@@ -17,7 +17,7 @@ from scipy.signal import hilbert
 
 def load_data_np(encoding_mode, task, region_name=['HPC'], subregion=['ca1'], train_only=True, 
                     base_scratch = '/scratch/john/SWRrefactored/patient_info/'):
-    
+
     print("Loading data")
     
     condition_on_ca1_ripples = False
@@ -29,9 +29,9 @@ def load_data_np(encoding_mode, task, region_name=['HPC'], subregion=['ca1'], tr
             files_dir = f'{base_scratch}FR1/ENCODING/'
     else:
         if task=='catFR1':
-            files_dir = f'{base_scratch}catFR1/NOIRI/'
+            files_dir = f'{base_scratch}catFR1/IRIonly/'
         elif task == 'FR1':
-            files_dir = f'{base_scratch}FR1/NOIRI/'
+            files_dir = f'{base_scratch}FR1/IRIonly/'
         
     print(f"LOADING DATA FROM: {region_name[0]} FOR EXPERIMENT {task}")
         
@@ -58,6 +58,9 @@ def load_data_np(encoding_mode, task, region_name=['HPC'], subregion=['ca1'], tr
         selected_elecs = [x for x in ENTPHC_labels]
     elif region_name == ['AMY']:
         selected_elecs = [x for x in AMY_labels]
+    else:
+        print('No region by that name in these parts')
+        error
  
     if len(selected_elecs) > 0:
         data_dict = select_region(data_dict, selected_elecs, one_d_keys)

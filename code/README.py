@@ -18,7 +18,7 @@ github, so you can reproduce my environment by running conda env create
 
 /usr/global/shared/slursh
 
-conda activate env1
+conda activate workshopJ
 sbatch ~/SWRrefactored/code/clusterFromDF.slurm
 /usr/global/shared/sjobs|grep john
 

@@ -37,8 +37,7 @@ df = get_data_index("r1") # all RAM subjects
 exp = 'catFR1' # 'catFR1' #'FR1'
 save_path = f'/scratch/john/SWRrefactored/patient_info/{exp}/'
 ### params that clusterRun used
-selected_period = 'encoding' # surrounding_recall # whole_retrieval # encoding 
-recall_type_switch = 10 # 0 for original, 1 for only those with subsequent, 2 for second recalls only, 3 for isolated recalls
+selected_period = 'surrounding_recall' # surrounding_recall # whole_retrieval # encoding 
 remove_soz_ictal = 0
 recall_minimum = 2000
 filter_type = 'hamming'
@@ -49,6 +48,12 @@ available_regions = {
     "AMY_labels": AMY_labels
 }
 brain_region_idxs = np.arange(len(available_regions))
+if selected_period == 'encoding':
+    recall_type_switch = 10 # no IRI requirements for recalls that is necessary for surrounding_recall
+elif selected_period == 'surrounding_recall':
+    recall_type_switch = 0 # 0 for original (remove IRI < recall_minimum), 1 for only those with subsequent, 2 for second recalls only, 3 for isolated recalls
+else:
+    print('make sure you read through and understand what getSWRpathInfo is doing')
 ################################################################
 
 def ClusterRunSWRs(row, selected_region,save_path, selected_period, 
