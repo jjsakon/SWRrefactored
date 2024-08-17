@@ -124,21 +124,21 @@ def load_data(directory, region_name, encoding_mode, train_only=False, condition
     if encoding_mode: 
         
         data_dict = {'ripple': [], 'clust': [], 
-                     'correct': [], 'position': [], 'list_num': [], 'subj': [], 'sess': [],
+                     'correct': [], 'recall_pos': [], 'list_num': [], 'subj': [], 'sess': [],
                      'elec_names':[], 'elec_labels': [], 'serial_pos': [], 'raw': [], 'elec_by_elec_correlation': [], 
                     'trial_by_trial_correlation': [], 'elec_ripple_rate_array': [], 'category_array': []}
         
-        num_timesteps = 2500 # ms
+        num_timesteps = 2500 # ms -1.7 to 3.3 s at fs=500 (with 1000 ms buffers)
         
     else:
         
         data_dict = {'ripple': [], 'list_num': [], 
                      'subj': [], 'sess': [], 'elec_names':[], 'elec_labels': [], 'clust': [], 'raw': [],
-                     'elec_by_elec_correlation': [], 
+                     'elec_by_elec_correlation': [], 'serial_pos': [], 'recall_pos': [],
                     'trial_by_trial_correlation': [], 'elec_ripple_rate_array': []}
         
         
-        num_timesteps = 3000 # ms
+        num_timesteps = 3000 # ms -2.0 to 2.0 s at fs=500 (with 1000 ms buffers)
          
     file_list = os.listdir(directory)
     
@@ -221,16 +221,18 @@ def load_data(directory, region_name, encoding_mode, train_only=False, condition
 
         data_dict['raw'].append(np.asarray(loaded_data['raw_eeg']))
 
-        if encoding_mode:
-            
+        if encoding_mode:            
             # vstack to get 2d shape num_trials x num_elecs
             # the correct indices should all be repetitions of each other
-            data_dict['correct'].append(np.vstack(loaded_data['encoded_word_key_array']).T)
-            data_dict['serial_pos'].append(np.vstack(loaded_data['serialpos_array']).T)
-
-            # reshape 1d array to num_trials x num_elec 
-            data_dict['position'].append(np.reshape(loaded_data['recall_position_array'], (-1, num_trials)).T)
-           
+            data_dict['correct'].append(np.vstack(loaded_data['encoded_word_key_array']).T)        
+            data_dict['serial_pos'].append(np.vstack(loaded_data['serialpos_array']).T)  
+        else:
+            # need serialpos for recalls to eliminate 1st from each list
+            data_dict['serial_pos'].append(np.reshape(loaded_data['serialpos_array'], (-1, num_trials)).T)
+                                        
+        # reshape 1d array to num_trials x num_elec 
+        data_dict['recall_pos'].append(np.reshape(loaded_data['recall_position_array'], (-1, num_trials)).T)   
+        
         # reshape 1d array  num_trials x num_elec 
         data_dict['clust'].append(np.reshape(loaded_data['semantic_clustering_key'], (-1, num_trials)).T)
         
