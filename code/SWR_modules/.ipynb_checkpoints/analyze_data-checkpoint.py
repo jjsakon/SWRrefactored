@@ -130,7 +130,7 @@ def create_semantic_clustered_array(data_dict, encoding_mode):
     else:    
         
         # get postion of recall
-        recall_position_all = data_dict['position']
+        recall_position_all = data_dict['recall_pos']
         
         for sess_pos, sess_clust in zip(recall_position_all, semantic_array_all):
             

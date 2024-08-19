@@ -9,7 +9,8 @@ from pylab import *
 from copy import copy
 from scipy import stats
 plt.rcParams['pdf.fonttype'] = 42; plt.rcParams['ps.fonttype'] = 42 # fix fonts for Illustrator
-sys.path.append('/home1/john/SWRrefactored/code/SWR_modules/')
+# sys.path.append('/home1/john/SWRrefactored/code/SWR_modules/')
+sys.path.insert(0, '/home1/john/SWRrefactored/code/SWR_modules/')
 from SWRmodule import *
 from general import * #superVstack,findInd,findAinB
 import csv
@@ -37,7 +38,7 @@ df = get_data_index("r1") # all RAM subjects
 exp = 'catFR1' # 'catFR1' #'FR1'
 save_path = f'/scratch/john/SWRrefactored/patient_info/{exp}/'
 ### params that clusterRun used
-selected_period = 'surrounding_recall' # surrounding_recall # whole_retrieval # encoding 
+selected_period = 'encoding' # surrounding_recall # whole_retrieval # encoding 
 remove_soz_ictal = 0
 recall_minimum = 2000
 filter_type = 'hamming'
@@ -813,7 +814,7 @@ def ClusterRunSWRs(row, selected_region,save_path, selected_period,
 
     except Exception as e:
         add_session_to_exclude_list(f"An exception occurred: {e}")
-        LogDFExceptionLine(row, e, 'ClusterRunSWR_log.txt') 
+        LogDFExceptionLine(row, e, 'logs/SWRrefactoredClusterRunSWR_log.txt') 
           
         
     if save_values == 1 and program_ran == 1:
@@ -860,7 +861,7 @@ def ClusterRunSWRs(row, selected_region,save_path, selected_period,
             print("Saved data")
             
         except:
-            LogDFExceptionLine(row, e, 'ClusterRunSWR_log.txt') 
+            LogDFExceptionLine(row, e, 'logs/SWRrefactoredClusterRunSWR_log.txt') 
             add_session_to_exclude_list("Could not save file")
             
     else:
@@ -881,7 +882,7 @@ with open(f'/scratch/john/SWRrefactored/patient_info/temp_dfSWR_{selected_period
     temp_df = dill.load(f)
 
 if cluster_run == 0:
-    subject = 'R1367D' #'R1385E'
+    subject = 'R1485J' #'R1385E'
     region_list = HPC_labels
     session = 0
     

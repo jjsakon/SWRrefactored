@@ -352,7 +352,8 @@ def select_region(data_dict, selected_elecs, one_d_keys):
             try:
                 data_dict_selected_elecs[key].append(data_dict[key][sess][selected_ind])
             except:
-                print(key)
+                a=1;
+                #print(key)
         
         # remainder of data is 2D
         for key, val in data_dict.items():

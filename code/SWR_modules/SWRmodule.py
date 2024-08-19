@@ -628,7 +628,9 @@ def get_recall_clustering(recall_cluster_values, recalls_serial_pos):
                     dists.append(np.nan)
             dists = np.array(dists)
             dists = dists[np.isfinite(dists)]
-            true_trans = euclidean(recall_cluster_values[recalls_serial_pos[ridx]], recall_cluster_values[recalls_serial_pos[ridx+1]])
+            true_trans = euclidean(np.atleast_1d(recall_cluster_values[recalls_serial_pos[ridx]]), 
+                       np.atleast_1d(recall_cluster_values[recalls_serial_pos[ridx+1]]))
+
         
             # remove the actual transition from the denominator to scale from 0 to 1 (see Manning 2011 PNAS)
             test_dists = list(dists)
@@ -1086,25 +1088,44 @@ def getBadChannels(tal_struct,elecs_cat,remove_soz_ictal):
             
     return bad_bp_mask
 
+# def getStartEndArrays(ripple_array):
+#     '''
+#     get separate arrays of SWR starts and SWR ends from the full binarized array
+#     '''
+    
+#     start_array = np.zeros((ripple_array.shape),dtype='uint8')
+#     end_array = np.zeros((ripple_array.shape),dtype='uint8')        
+    
+#     num_trials = ripple_array.shape[0]    
+#     for trial in range(num_trials):
+#         ripplelogictrial = ripple_array[trial]
+#         starts,ends = getLogicalChunks(ripplelogictrial)
+#         temp_row = np.zeros(len(ripplelogictrial))
+#         temp_row[starts] = 1
+#         start_array[trial] = temp_row # time when each SWR starts
+#         temp_row = np.zeros(len(ripplelogictrial))
+#         temp_row[ends] = 1
+#         end_array[trial] = temp_row
+#     return start_array,end_array
+
 def getStartEndArrays(ripple_array):
     '''
-    get separate arrays of SWR starts and SWR ends from the full binarized array
+    Get separate arrays of SWR starts and SWR ends from the full binarized array
     '''
     
-    start_array = np.zeros((ripple_array.shape),dtype='uint8')
-    end_array = np.zeros((ripple_array.shape),dtype='uint8')        
+    # Shift the ripple array to the right and left by one position
+    shifted_right = np.roll(ripple_array, shift=1, axis=1)
+    shifted_left = np.roll(ripple_array, shift=-1, axis=1)
     
-    num_trials = ripple_array.shape[0]    
-    for trial in range(num_trials):
-        ripplelogictrial = ripple_array[trial]
-        starts,ends = getLogicalChunks(ripplelogictrial)
-        temp_row = np.zeros(len(ripplelogictrial))
-        temp_row[starts] = 1
-        start_array[trial] = temp_row # time when each SWR starts
-        temp_row = np.zeros(len(ripplelogictrial))
-        temp_row[ends] = 1
-        end_array[trial] = temp_row
-    return start_array,end_array
+    # Find the start by looking for a transition from 0 to 1
+    start_array = (ripple_array == 1) & (shifted_right == 0)
+    start_array[:, 0] = ripple_array[:, 0]  # Handle the edge case for the first column
+    
+    # Find the end by looking for a transition from 1 to 0
+    end_array = (ripple_array == 1) & (shifted_left == 0)
+    end_array[:, -1] = ripple_array[:, -1]  # Handle the edge case for the last column
+    
+    return start_array.astype('uint8'), end_array.astype('uint8')
 
 def detectRipplesHamming(eeg_rip,trans_width,sr,iedlogic):
     
@@ -1404,14 +1425,13 @@ def binBinaryArray(start_array,bin_size,sr_factor):
         bin_to_hz = 1000/bin_size*bin_in_sr # factor that converts binned matrix to Hz
     else:
         bin_to_hz = 1
-    
-    binned_array = [] # note this will be at instantaeous rate bin_in_sr multiple lower (e.g. 100 ms bin/2 sr = 50x)
+    binned_array = np.zeros((start_array.shape[0], num_bins))
+    # note this will be at instantaeous rate bin_in_sr multiple lower (e.g. 100 ms bin/2 sr = 50x)
 
-    for row in start_array:
-        temp_row = []
-        for time_bin in bins:
-            temp_row.append(bin_to_hz*np.mean(row[int(time_bin):int(time_bin+bin_in_sr)]))
-        binned_array = superVstack(binned_array,temp_row)
+    for i, row in enumerate(start_array):
+        for j, start in enumerate(bins[:-1]):
+            binned_array[i, j] = bin_to_hz * np.mean(row[int(start):int(start + bin_in_sr)])
+
     return binned_array
 
 def getSubSessPredictors(sub_names,sub_sess_names,trial_nums,electrode_labels,channel_coords):
