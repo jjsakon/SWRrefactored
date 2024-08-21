@@ -19,7 +19,13 @@ def load_z_scored_power(dd_trials,freq_range_str_arr,encoding_mode,fs,start_cuto
 
     if run_Morlet == 1:
         num_freqs = 10 # of log-spaced freqs between freq_range...should make sure they don't occur at 60/120
-        filtered_sig = get_filtered_signal_Morlet(raw_data, freq_range_str_arr, start_cutoff, 
+        
+        # data that's too big will run out of memory...for a rough estimate if > 150,000 trials (x 10 freqs x 2500 samples)
+        if np.shape(raw_data)[0] > 150000:
+            filtered_sig = get_filtered_signal_Morlet_memmap(raw_data, freq_range_str_arr, start_cutoff, 
+                                       end_cutoff, fs, width=5, num_freqs=num_freqs)            
+        else:
+            filtered_sig = get_filtered_signal_Morlet(raw_data, freq_range_str_arr, start_cutoff, 
                                        end_cutoff, fs, width=5, num_freqs=num_freqs)
     else:
         # filter signal using hilbert method
@@ -124,6 +130,32 @@ def get_filtered_signal_Hilbert(raw_data, freq_range, start_idx, end_idx, fs, ba
                        h_trans_bandwidth=bandwidth, verbose=False)
         filtered[jj, :] = hilbert(bandpassed_data) # outputs freq_range X trials X time
     return filtered[:, :, start_idx:end_idx] # idx in samples
+
+def get_filtered_signal_Morlet_memmap(raw_data, freq_ranges, start_idx, end_idx, fs, width=5, num_freqs=10):
+    from mne.time_frequency import tfr_array_morlet
+    import os
+
+    n_trials = raw_data.shape[0]
+    n_points = raw_data.shape[1]
+    n_chunks = 10  # Number of chunks to split into
+
+    # Create a memory-mapped file to store the filtered results
+    filtered = np.memmap('/scratch/john/SWRrefactored/temp_dat/filtered_array.dat', dtype=np.complex64, mode='w+',
+                         shape=(len(freq_ranges), n_trials, num_freqs, n_points))
+
+    chunk_size = n_trials // n_chunks
+    for i in range(n_chunks):
+        chunk_start = i * chunk_size
+        chunk_end = min((i + 1) * chunk_size, n_trials)
+        chunk_data = raw_data[chunk_start:chunk_end]
+
+        for jj, freq_limits in enumerate(freq_ranges):
+            freqs = np.logspace(np.log10(freq_limits[0]), np.log10(freq_limits[1]), num_freqs)
+            filtered_chunk = np.squeeze(tfr_array_morlet(chunk_data[:, np.newaxis, :],
+                                                         sfreq=fs, freqs=freqs, n_cycles=width, output='complex'))
+            filtered[jj, chunk_start:chunk_end] = filtered_chunk[:, :, start_idx:end_idx]
+
+    return filtered
     
 def z_score(power):
     
