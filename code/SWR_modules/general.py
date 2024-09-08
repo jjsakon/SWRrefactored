@@ -151,6 +151,42 @@ def seFromProp(num_correct,trials):
     stderr = np.sqrt(num_correct*(1-num_correct/trials)/(trials-1)) / np.sqrt(trials)
     return stderr
 
+def calculate_cohens_d_interaction(data,outcome,preds):
+    """
+    Calculates Cohen's d for a 2x2 interaction between pred1 and pred2 for outcome.
+    
+    example usage: calculate_cohens_d_interaction(df,'delta_ripple',['high_ripple','low_gamma'])
+    data should have outcome and two preds in a list that are all the same length in df
+    
+    """
+    pred1 = preds[0]
+    pred2 = preds[1]
+
+    # Calculate mean differences for each combination of high_ripple and low_gamma
+    means = data.groupby([pred1, pred2])[outcome].mean()
+    diff1 = means.loc[1, 0] - means.loc[0, 0]
+    diff2 = means.loc[1, 1] - means.loc[0, 1]
+#     import ipdb; ipdb.set_trace()
+    # Calculate the difference between the mean differences
+    interaction_diff = diff1 - diff2
+
+    # Calculate the pooled standard deviation
+    aa = data.loc[(data[pred1] == 1) & (data[pred2] == 1), outcome]
+    ab = data.loc[(data[pred1] == 1) & (data[pred2] == 0), outcome]
+    ba = data.loc[(data[pred1] == 0) & (data[pred2] == 1), outcome]
+    bb = data.loc[(data[pred1] == 0) & (data[pred2] == 0), outcome]
+    std1 = aa.std()
+    std2 = ab.std()
+    std3 = ba.std()
+    std4 = bb.std()
+    pooled_std = np.sqrt(
+          ((len(aa)-1)*std1**2 + (len(ab)-1)*std2**2 + (len(ba)-1)*std3**2 + (len(bb)-1)*std4**2) / (len(aa)+len(ab)+len(bb)+len(ba)-2)
+    )
+
+    # Calculate Cohen's d
+    cohens_d = interaction_diff / (2 * pooled_std)
+    return cohens_d
+
 def findInd(idx): # note: np.where does this, but it returns a tuple and this returns a list...actually now an array
     # get the indices when given boolean vector (like find function in matlab)
     idxs = [i for i,val in enumerate(idx) if val]
