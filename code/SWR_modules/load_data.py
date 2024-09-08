@@ -144,7 +144,7 @@ def load_data(directory, region_name, encoding_mode, train_only=False, condition
     
     one_d_keys = ['trial_by_trial_correlation', 'elec_by_elec_correlation', 'elec_names', 'elec_labels', 
                     'elec_ripple_rate_array']
-    
+    cumulative_trials = 0
     for f in file_list:
         
         if train_only: 
@@ -164,7 +164,7 @@ def load_data(directory, region_name, encoding_mode, train_only=False, condition
             continue
          
         # Open the pickle file for reading
-        with open(f'{directory}/{f}', 'rb') as pickle_file:
+        with open(f'{directory}{f}', 'rb') as pickle_file:
             loaded_data = pickle.load(pickle_file, encoding='latin1')  
         
         # we'll also load HPC data if conditioning on ca1 ripples
@@ -185,7 +185,7 @@ def load_data(directory, region_name, encoding_mode, train_only=False, condition
 
         # rows of raw give us number of words presented in that session
         num_trials = loaded_data['raw_eeg'].shape[0]
-        
+        cumulative_trials+=num_trials
 
         # there's a session in entphc where trials are longer for encoding (185 vs 150) (not sure why)
         # going to exclude any sessions like this
@@ -255,7 +255,8 @@ def load_data(directory, region_name, encoding_mode, train_only=False, condition
         else:
             data_dict['elec_by_elec_correlation'].append(np.repeat(loaded_data['elec_by_elec_correlation'], 
                                                                          num_elecs))
-        
+    print(f'Number of trials after load: {cumulative_trials}')
+    print(f'Final number of trials in dict: {sum([np.shape(dd)[0] * np.shape(dd)[1] for dd in data_dict["list_num"]])}')
     return data_dict, one_d_keys
 
 def remove_wrong_length_lists(data_dict, one_d_keys, list_length=12):

@@ -98,7 +98,19 @@ def plotHistoBar(values,start,end,bin_size,tick_range_divisor=1,normalize=False,
     plt.xticks(xr[has_ticks[:-1]]-bin_size/2,ticks) # [:-1 since took midpoints to get xr above]
     if log_scale == True:
         plt.xscale('log')
-        
+
+def cohens_d(group1, group2):
+    # Compute the means of each group
+    mean1, mean2 = np.mean(group1), np.mean(group2)
+    # Compute the standard deviations and sample sizes
+    std1, std2 = np.std(group1, ddof=1), np.std(group2, ddof=1)
+    n1, n2 = len(group1), len(group2)
+    # Calculate pooled standard deviation
+    pooled_std = np.sqrt(((n1 - 1) * std1**2 + (n2 - 1) * std2**2) / (n1 + n2 - 2))
+    # Calculate Cohen's d
+    d = (mean1 - mean2) / pooled_std
+    return d
+
 def plotLogHist(x, bins):
     import matplotlib.pyplot as plt
     hist, bins = np.histogram(x, bins=bins)

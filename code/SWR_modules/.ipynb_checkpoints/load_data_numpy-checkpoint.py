@@ -36,8 +36,7 @@ def load_data_np(encoding_mode, task, region_name=['HPC'], subregion=['ca1'], tr
     print(f"LOADING DATA FROM: {region_name[0]} FOR EXPERIMENT {task}")
         
     data_dict, one_d_keys = load_data(directory=files_dir, region_name=region_name, 
-                          encoding_mode=encoding_mode, train_only=train_only)
-    
+                          encoding_mode=encoding_mode, train_only=train_only)    
     if task == False:
         data_dict.pop('clust')
         data_dict.pop('category_array')
@@ -69,9 +68,8 @@ def load_data_np(encoding_mode, task, region_name=['HPC'], subregion=['ca1'], tr
     if task:
         clustered_int = create_semantic_clustered_array(data_dict, encoding_mode)
         data_dict['clust_int'] = clustered_int
-
-    dd_trials = dict_to_numpy(data_dict, order='C')
     
+    dd_trials = dict_to_numpy(data_dict, order='C')
     return dd_trials
 
 
