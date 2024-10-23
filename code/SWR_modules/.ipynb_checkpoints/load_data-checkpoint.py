@@ -128,7 +128,7 @@ def load_data(directory, region_name, encoding_mode, train_only=False, condition
                      'elec_names':[], 'elec_labels': [], 'serial_pos': [], 'raw': [], 'elec_by_elec_correlation': [], 
                     'trial_by_trial_correlation': [], 'elec_ripple_rate_array': [], 'category_array': []}
         
-        num_timesteps = 2500 # ms -1.7 to 3.3 s at fs=500 (with 1000 ms buffers)
+#         num_timesteps = 2500 # ms -1.7 to 3.3 s at fs=500 (with 1000 ms buffers)
         
     else:
         
@@ -138,7 +138,7 @@ def load_data(directory, region_name, encoding_mode, train_only=False, condition
                     'trial_by_trial_correlation': [], 'elec_ripple_rate_array': []}
         
         
-        num_timesteps = 3000 # ms -2.0 to 2.0 s at fs=500 (with 1000 ms buffers)
+#         num_timesteps = 3000 # ms -2.0 to 2.0 s at fs=500 (with 1000 ms buffers)
          
     file_list = os.listdir(directory)
     
@@ -190,8 +190,9 @@ def load_data(directory, region_name, encoding_mode, train_only=False, condition
         # there's a session in entphc where trials are longer for encoding (185 vs 150) (not sure why)
         # going to exclude any sessions like this
         raw_timesteps = loaded_data['raw_eeg'].shape[2]
-        if raw_timesteps != num_timesteps:
-            continue
+#         import ipdb; ipdb.set_trace()
+#         if raw_timesteps != num_timesteps:
+#             continue
         
         
         # elec_names is the only entry which is of shape num_elecs

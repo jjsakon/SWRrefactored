@@ -634,7 +634,8 @@ def get_recall_clustering(recall_cluster_values, recalls_serial_pos):
         
             # remove the actual transition from the denominator to scale from 0 to 1 (see Manning 2011 PNAS)
             test_dists = list(dists)
-            test_dists.remove(true_trans) # Ethan didn't do this either
+            if true_trans in test_dists:
+                test_dists.remove(true_trans) # Ethan didn't do this either
 
             # can only get 1.0 or 0.0 transition if transitioning from first or last word using 'mean' but how Manning 2011 does it
             pctrank = 1.-percentileofscore(test_dists, true_trans, kind='mean')/100. # 'mean' as in PYBEH temp_fact. Ethan used 'strict'
@@ -1407,12 +1408,13 @@ def fullPSTH(point_array,binsize,smoothing_triangle,sr,start_offset):
     bin_centers = edges[0:-1]+binsize/2+start_offset
 
     count = np.histogram(xtimes,bins=edges);
-    norm_count = count/np.array((num_trials*binsize/1000))
+    norm_count = count[0]/np.array((num_trials*binsize/1000))
+
     #smoothed = fastSmooth(norm_count[0],5) # use triangular instead, although this gives similar answer
     if smoothing_triangle==1:
-        PSTH = norm_count[0]
+        PSTH = norm_count
     else:
-        PSTH = triangleSmooth(norm_count[0],smoothing_triangle)
+        PSTH = triangleSmooth(norm_count,smoothing_triangle)
     return PSTH,bin_centers
 
 def binBinaryArray(start_array,bin_size,sr_factor):

@@ -6,7 +6,7 @@ sys.path.append('/home1/efeghhi/ripple_memory/')
 from SWRmodule import *
 import mne
 from brain_labels import HPC_labels, ENT_labels, PHC_labels, temporal_lobe_labels,\
-                        MFG_labels, IFG_labels, nonHPC_MTL_labels, ENTPHC_labels, AMY_labels
+                        MFG_labels, IFG_labels, nonHPC_MTL_labels, ENTPHC_labels, AMY_labels, ACC_OF_MFC_labels
 
 
 def create_ripple_exists(dd_trials, ripple_start, ripple_end, min_ripple_time):

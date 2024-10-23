@@ -57,8 +57,10 @@ def load_data_np(encoding_mode, task, region_name=['HPC'], subregion=['ca1'], tr
         selected_elecs = [x for x in ENTPHC_labels]
     elif region_name == ['AMY']:
         selected_elecs = [x for x in AMY_labels]
+    elif region_name == ['ACC_OF']:
+        selected_elecs = [x for x in ACC_OF_MFC_labels]
     else:
-        print('No region by that name in these parts')
+        print('No region by that name in these parts...check imports in analyze_data.py and add a region in line above this')
         error
  
     if len(selected_elecs) > 0:

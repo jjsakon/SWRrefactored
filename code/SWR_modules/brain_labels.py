@@ -10,6 +10,7 @@ see SWRgetRegionNames for details on getting the region names and the order or o
 in SWRmodule.
 2020-09-04 JS checked this for catFR too and regions are the same
 2021-10-06 JS adding a general temporal lobe labels
+2024-10-20 JS added frontal cortex regions to look at ACC and OFC
 '''
 
 
@@ -102,6 +103,24 @@ extra_TL = [' left fug fusiform gyrus',' right fug fusiform gyrus','left fug fus
           ' left ttg transverse temporal gyrus',' right ttg transverse temporal gyrus','left ttg transverse temporal gyrus','right ttg transverse temporal gyrus'
          ]
 temporal_lobe_labels = temporal_lobe_labels+extra_TL
+
+
+# Want to get a group of ACC and OFC (will include MFC) to compare to Fried data
+ACC_OF_MFC_labels = [' left aorg anterior orbital gyrus','left aorg anterior orbital gyrus',
+              ' left lorg lateral orbital gyrus','left lorg lateral orbital gyrus',
+              ' left porg posterior orbital gyrus','left porg posterior orbital gyrus',
+              ' left morg medial orbital gyrus','left morg medial orbital gyrus',
+              ' left gre gyrus rectus','left gre gyrus rectus',
+              ' left mfc medial frontal cortex','left mfc medial frontal cortex',
+              ' left acgg anterior cingulate gyrus','left acgg anterior cingulate gyrus',
+              ' right aorg anterior orbital gyrus','right aorg anterior orbital gyrus',
+              ' right lorg lateral orbital gyrus','right lorg lateral orbital gyrus',
+              ' right porg posterior orbital gyrus','right porg posterior orbital gyrus',
+              ' right morg medial orbital gyrus','right morg medial orbital gyrus',
+              ' right gre gyrus rectus','right gre gyrus rectus',
+              ' right mfc medial frontal cortex','right mfc medial frontal cortex',
+              ' right acgg anterior cingulate gyrus','right acgg anterior cingulate gyrus',              
+             ]
 
 '''
 # This is the original, which only has labels for those places STIMULATED across PS tasks.

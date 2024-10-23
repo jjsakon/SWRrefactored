@@ -151,7 +151,7 @@ def seFromProp(num_correct,trials):
     stderr = np.sqrt(num_correct*(1-num_correct/trials)/(trials-1)) / np.sqrt(trials)
     return stderr
 
-def calculate_cohens_d_interaction(data,outcome,preds):
+def cohens_d_interaction(data,outcome,preds):
     """
     Calculates Cohen's d for a 2x2 interaction between pred1 and pred2 for outcome.
     

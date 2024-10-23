@@ -22,7 +22,7 @@ from scipy.signal import firwin,filtfilt,kaiserord
 from ptsa.data.filters import ButterworthFilter, ResampleFilter, MorletWaveletFilter
 import xarray as xarray
 from brain_labels import HPC_labels, ENT_labels, PHC_labels, temporal_lobe_labels,\
-                        MFG_labels, IFG_labels, nonHPC_MTL_labels, ENTPHC_labels, AMY_labels
+                        MFG_labels, IFG_labels, nonHPC_MTL_labels, ENTPHC_labels, AMY_labels, ACC_OF_MFC_labels
 # from SWRmodule import CMLReadDFRow,get_bp_tal_struct,get_elec_regions,ptsa_to_mne,detectRipplesHamming
 # from SWRmodule import *
 # downsampleBinary,LogDFExceptionLine,getBadChannels,getStartEndArrays,getSecondRecalls,\
@@ -38,15 +38,16 @@ df = get_data_index("r1") # all RAM subjects
 exp = 'catFR1' # 'catFR1' #'FR1'
 save_path = f'/scratch/john/SWRrefactored/patient_info/{exp}/'
 ### params that clusterRun used
-selected_period = 'encoding' # surrounding_recall # whole_retrieval # encoding 
+selected_period = 'surrounding_recall' # surrounding_recall # whole_retrieval # encoding 
 remove_soz_ictal = 0
-recall_minimum = 2000
+recall_minimum = 5000 # 2000
 filter_type = 'hamming'
 extra = '' #'- ZERO_IRI'
 available_regions = {
-    "HPC_labels": HPC_labels,
-    "ENTPHC_labels": ENTPHC_labels,
-    "AMY_labels": AMY_labels
+    "ACC_OF_labels": ACC_OF_MFC_labels,   
+#     "HPC_labels": HPC_labels,
+#     "ENTPHC_labels": ENTPHC_labels,
+#     "AMY_labels": AMY_labels
 }
 brain_region_idxs = np.arange(len(available_regions))
 if selected_period == 'encoding':
@@ -128,7 +129,7 @@ def ClusterRunSWRs(row, selected_region,save_path, selected_period,
     # 7: take only NOT first recall AND ISOLATED trials (this should REALLY maximize SWR bump)
     # 10: same as 0 but with no IRI (mostly just to see number of recalls)
     remove_soz_ictal = 0 # 0 for nothing, 1 for SOZ, 2 for SOZ+ictal    
-    min_ripple_rate = 0.1 # Hz.
+    min_ripple_rate = 0.025 # Hz. # 0.1
     max_ripple_rate = 1.5 # Hz.
     max_trial_by_trial_correlation = 0.05 # if ripples correlated more than this remove them
     max_electrode_by_electrode_correlation = 0.2
@@ -143,8 +144,8 @@ def ClusterRunSWRs(row, selected_region,save_path, selected_period,
 #     for recall_minimum in recall_mins:
     
     # recall params
-    recall_minimum = 2000 # for isolated recalls what is minimum time for recall to be considered isolated?
-    IRI = 2000 # inter-ripple interval...remove ripples within this range (keep only first one and remove those after it)
+#     recall_minimum = 5000 # for isolated recalls what is minimum time for recall to be considered isolated?
+    IRI = 5000 # inter-recall interval...remove recalls within this range (keep only first one and remove those after it)
     retrieval_whole_time = 10000
     # encoding params
     encoding_time = 2300 # actual preentation is 1.6 s + 0.75-1.0 s so keep +700 ms so can plot +500 ms
@@ -174,6 +175,8 @@ def ClusterRunSWRs(row, selected_region,save_path, selected_period,
         region_name = 'ENTPHC'
     elif selected_region == AMY_labels:
         region_name = 'AMY'
+    elif selected_region == ACC_OF_MFC_labels:
+        region_name = 'ACC_OF'
 
     if selected_period == 'surrounding_recall':
         if IRI == 0:
@@ -761,7 +764,8 @@ def ClusterRunSWRs(row, selected_region,save_path, selected_period,
                 rectime_array.extend(np.array(evs_free_recall.rectime))  
                 
                 # just save the whole dataframe too so I have name and list_num (so I can align to Jim/David's analysis 2021-10-05)
-                session_events = session_events.append(eeg_events)    
+#                 session_events = session_events.append(eeg_events)
+                session_events = pd.concat([session_events, eeg_events], ignore_index=True)
                 
                 # put these here since for encoding now going to use semantic_clustering_key at that scope
                 semantic_clustering_key.extend(np.array(temp_semantic_key)[selected_recalls_idxs])
@@ -814,7 +818,7 @@ def ClusterRunSWRs(row, selected_region,save_path, selected_period,
 
     except Exception as e:
         add_session_to_exclude_list(f"An exception occurred: {e}")
-        LogDFExceptionLine(row, e, 'logs/SWRrefactoredClusterRunSWR_log.txt') 
+        LogDFExceptionLine(row, e, '/home1/john/logs/SWRrefactoredClusterRunSWR_log.txt') 
           
         
     if save_values == 1 and program_ran == 1:
@@ -861,7 +865,7 @@ def ClusterRunSWRs(row, selected_region,save_path, selected_period,
             print("Saved data")
             
         except:
-            LogDFExceptionLine(row, e, 'logs/SWRrefactoredClusterRunSWR_log.txt') 
+            LogDFExceptionLine(row, e, '/home1/john/logs/SWRrefactoredClusterRunSWR_log.txt') 
             add_session_to_exclude_list("Could not save file")
             
     else:
@@ -879,6 +883,7 @@ replace_files = 0 # replace the files that exist already on scratch
 
     
 with open(f'/scratch/john/SWRrefactored/patient_info/temp_dfSWR_{selected_period}_{exp}.p', 'rb') as f:
+# with open(f'/scratch/john/SWRrefactored/patient_info/temp_dfSWR_{selected_period}_{exp}_311testsubs.p', 'rb') as f:
     temp_df = dill.load(f)
 
 if cluster_run == 0:
