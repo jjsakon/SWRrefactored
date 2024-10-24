@@ -35,7 +35,7 @@ import pingouin as pg
 
 ################################################################
 df = get_data_index("r1") # all RAM subjects
-exp = 'catFR1' # 'catFR1' #'FR1'
+exp = 'FR1' # 'catFR1' #'FR1'
 save_path = f'/scratch/john/SWRrefactored/patient_info/{exp}/'
 ### params that clusterRun used
 selected_period = 'surrounding_recall' # surrounding_recall # whole_retrieval # encoding 

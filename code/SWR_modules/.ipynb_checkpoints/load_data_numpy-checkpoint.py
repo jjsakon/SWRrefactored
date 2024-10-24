@@ -15,7 +15,7 @@ from mne.time_frequency import tfr_array_morlet
 from scipy.signal import hilbert
 
 
-def load_data_np(encoding_mode, task, region_name=['HPC'], subregion=['ca1'], train_only=True, 
+def load_data_np(encoding_mode, task, region_name=['HPC'], subregion=[''], train_only=True, 
                     base_scratch = '/scratch/john/SWRrefactored/patient_info/'):
 
     print("Loading data")
@@ -50,15 +50,23 @@ def load_data_np(encoding_mode, task, region_name=['HPC'], subregion=['ca1'], tr
         if subregion == ['']: # take all HPC elecs
             selected_elecs = [x for x in HPC_labels]
         else:
-            for s in subregion:
-                selected_elecs_s = [x for x in HPC_labels if s in x]
-                selected_elecs.extend(selected_elecs_s)    
+            print('Stopped selecting subregions here...check top level')
+#             for s in subregion:
+#                 selected_elecs_s = [x for x in HPC_labels if s in x]
+#                 selected_elecs.extend(selected_elecs_s)    
     elif region_name == ['ENT']:
         selected_elecs = [x for x in ENTPHC_labels]
     elif region_name == ['AMY']:
         selected_elecs = [x for x in AMY_labels]
     elif region_name == ['ACC_OF']:
-        selected_elecs = [x for x in ACC_OF_MFC_labels]
+        if subregion == ['']: # take all HPC elecs
+            selected_elecs = [x for x in ACC_OF_MFC_labels]
+        else:
+            print('Stopped selecting subregions here...check top level')
+#         else:
+#             for s in subregion:
+#                 selected_elecs_s = [x for x in ACC_OF_MFC_labels if s in x]
+#                 selected_elecs.extend(selected_elecs_s)          
     else:
         print('No region by that name in these parts...check imports in analyze_data.py and add a region in line above this')
         error

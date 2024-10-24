@@ -256,7 +256,7 @@ def load_data(directory, region_name, encoding_mode, train_only=False, condition
         else:
             data_dict['elec_by_elec_correlation'].append(np.repeat(loaded_data['elec_by_elec_correlation'], 
                                                                          num_elecs))
-    print(f'Number of trials after load: {cumulative_trials}')
+#     print(f'Number of trials after load: {cumulative_trials}') # dunno what this counts but it's wrong now
     print(f'Final number of trials in dict: {sum([np.shape(dd)[0] * np.shape(dd)[1] for dd in data_dict["list_num"]])}')
     return data_dict, one_d_keys
 
