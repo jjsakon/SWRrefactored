@@ -132,9 +132,9 @@ def load_data(directory, region_name, encoding_mode, train_only=False, condition
         
     else:
         
-        data_dict = {'ripple': [], 'list_num': [], 
+        data_dict = {'ripple': [], 'list_num': [], 'correct': [],
                      'subj': [], 'sess': [], 'elec_names':[], 'elec_labels': [], 'clust': [], 'raw': [],
-                     'elec_by_elec_correlation': [], 'serial_pos': [], 'recall_pos': [],
+                     'elec_by_elec_correlation': [], 'serial_pos': [], 'serialpos_lags': [], 'recall_pos': [],
                     'trial_by_trial_correlation': [], 'elec_ripple_rate_array': []}
         
         
@@ -221,16 +221,20 @@ def load_data(directory, region_name, encoding_mode, train_only=False, condition
             data_dict['ripple'].append(np.asarray(loaded_data['ripple_array']))
 
         data_dict['raw'].append(np.asarray(loaded_data['raw_eeg']))
+        
+#         import ipdb; ipdb.set_trace()
 
         if encoding_mode:            
             # vstack to get 2d shape num_trials x num_elecs
             # the correct indices should all be repetitions of each other
-            data_dict['correct'].append(np.vstack(loaded_data['encoded_word_key_array']).T)        
+            data_dict['correct'].append(np.vstack(loaded_data['session_events']['recalled'].values).T)        
             data_dict['serial_pos'].append(np.vstack(loaded_data['serialpos_array']).T)  
         else:
             # need serialpos for recalls to eliminate 1st from each list
+            data_dict['correct'].append(np.reshape(loaded_data['session_events']['recalled'].values, (-1, num_trials)).T)
             data_dict['serial_pos'].append(np.reshape(loaded_data['serialpos_array'], (-1, num_trials)).T)
-                                        
+            data_dict['serialpos_lags'].append(np.reshape(loaded_data['serialpos_lags'], (-1, num_trials)).T)
+                       
         # reshape 1d array to num_trials x num_elec 
         data_dict['recall_pos'].append(np.reshape(loaded_data['recall_position_array'], (-1, num_trials)).T)   
         
@@ -360,8 +364,8 @@ def select_region(data_dict, selected_elecs, one_d_keys):
         # remainder of data is 2D
         for key, val in data_dict.items():
             if key not in one_d_keys:
+#                 print(key)
 #                 print(f'{sess},{selected_ind}')
-#                 import ipdb; ipdb.set_trace()
                 data_dict_selected_elecs[key].append(val[sess][:, selected_ind])
              
                 
@@ -433,8 +437,22 @@ def dict_to_numpy(data_dict, order='C'):
                 # are placed next to each other if order is C and all data from a given electrode are placed
                 # next to each other if order is F         
                 dd_trials[key].extend(np.reshape(sess, (-1, sess.shape[-1]), order=order))
- 
+     
     for key, val in dd_trials.items():
-        dd_trials[key] = np.asarray(val)
+        print(key)
+        if key == 'raw':
+            unique_lengths = np.unique([len(v) for v in val])
+            if len(unique_lengths) == 1:
+                print("All entries in raw have the same length.")
+                dd_trials[key] = np.asarray(val)
+            elif len(unique_lengths) == 2 and set(unique_lengths) == {2999, 3000}:
+                print("Some entries in raw are 1 element short. Padding with zeros...")
+                # Pad the shorter lists with zeros
+                val_padded = [np.pad(v, (0, 1), 'constant') if len(v) == 2999 else v for v in val]
+                dd_trials[key] = np.asarray(val_padded)
+            else:
+                raise ValueError("Unexpected lengths found in the data.")
+        else:
+            dd_trials[key] = np.asarray(val)
         
     return dd_trials
