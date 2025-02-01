@@ -282,8 +282,10 @@ def getSWRpathInfo(remove_soz_ictal,recall_type_switch,selected_period,recall_mi
         subfolder = 'WHOLE_RETRIEVAL'
     elif selected_period == 'encoding':
         subfolder = 'ENCODING' 
-    elif selected_period == 'math':
-        subfolder = 'MATH'
+    elif selected_period == 'distractor':
+        subfolder = 'DISTRACTOR'
+    elif selected_period == 'countdown':
+        subfolder = 'COUNTDOWN'
     elif selected_period == 'math_retrieval':
         subfolder = 'MATH_RETRIEVAL'
     elif selected_period == 'whole_encoding':
